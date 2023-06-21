@@ -1,4 +1,7 @@
 section.home > img {
-  height: 35rem;
-  width: 22.5rem;
+  height: 45em;
+  width: 30em;
+  /* background-size: cover; */
+  background-position:bottom;
+
 }

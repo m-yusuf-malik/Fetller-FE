@@ -1,0 +1,8 @@
+.home__features-headings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .25rem;
+    flex: 1;
+}

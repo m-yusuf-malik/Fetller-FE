@@ -3,14 +3,14 @@ import images from "../../../assets/images";
 import Button from "../../../components/Button/Button";
 
 const SectionA = () => {
-  const heroImg = images.heroImg;
+  const { sectionALeft, sectionARight } = images;
 
   return (
     <section
       className="home fc"
       style={{ backgroundColor: "#F3F4F6", gap: "2.5rem" }}
     >
-      <img src={heroImg} alt="" />
+      <img src={sectionALeft} alt="AI" />
       <div className="fc" style={{ flexDirection: "column", gap: ".5rem" }}>
         <h4>Be the best you!</h4>
         <p style={{ textAlign: "center" }}>
@@ -26,7 +26,7 @@ const SectionA = () => {
           }}
         />
       </div>
-      <img src={heroImg} alt="" />
+      <img src={sectionARight} alt="" />
     </section>
   );
 };

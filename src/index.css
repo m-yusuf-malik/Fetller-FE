@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap");
 
+:root {
+  --primary-bg-white-color: #F4F4F4;
+  
+  --primary-bg-color: #141a2a;
+  --secondary-bg--color: #bcdcff;
+  --tertiary-bg-color: #deedff;
+
+  --black-text-color: #202533;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #F3F4F6;
+  background-color: var(--primary-bg-white-color);
 }
 /* 
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import AcceptRequestFeature from "./AcceptRequestFeature/AcceptRequestFeature";
+import FeatureSection from "./FeatureSection/FeatureSection";
 import Hero from "./Hero/Hero";
 import SectionA from "./SectionA/SectionA";
 
@@ -29,9 +31,13 @@ const Homepage = () => {
   //   };
 
   return (
-    <div>
+    <div
+      style={{ backgroundColor: "var(--primary-bg-color)", padding: "5rem 0" }}
+    >
       <Hero />
       <SectionA />
+      <FeatureSection />
+      <AcceptRequestFeature />
     </div>
   );
 };

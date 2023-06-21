@@ -3,12 +3,12 @@ import images from "../../../assets/images";
 import Button from "../../../components/Button/Button";
 
 const Hero = () => {
-  const heroImg = images.heroImg;
+  const { heroVector, heroFirst, heroSecond, heroThird } = images;
 
   return (
     <section className="home fc">
       <div className="hero__texts">
-        <h2>A diet plan made only for you</h2>
+        <h2>A diet plan made with care only for you</h2>
         <p style={{ color: "#DEEDFF" }}>
           We always want to stay fit and healthy and we should be as it is a key
           part in solving the puzzle of living a happy life. Taking an adequate
@@ -21,13 +21,16 @@ const Hero = () => {
             style={{
               backgroundColor: "transparent",
               border: "1px solid #BCDCFF",
-              color: "#BCDCFF",
+              color: "var(--secondary-bg--color)",
             }}
           />
         </div>
       </div>
-      <div>
-        <img src={heroImg} width="500px" height="300px" alt="" />
+      <div className="home__hero-imgs fc">
+        <img src={heroVector} alt="" />
+        <img src={heroFirst} alt="" />
+        <img src={heroSecond} alt="" />
+        <img src={heroThird} alt="" />
       </div>
     </section>
   );
