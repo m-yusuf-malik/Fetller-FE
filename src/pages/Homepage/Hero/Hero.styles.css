@@ -1,0 +1,27 @@
+section.home {
+  background-color: #141a2a;
+  width: 100vw;
+  padding: 7.5rem 3rem;
+  gap: 5rem;
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 4rem;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #bcdcff;
+}
+
+.hero__buttons {
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.hero__texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
