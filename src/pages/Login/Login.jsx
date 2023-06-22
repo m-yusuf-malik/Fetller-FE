@@ -1,17 +1,65 @@
-import React, {useContext} from 'react'
-import AuthContext from '../../context/AuthContext'
+import "./Login.styles.css";
+
+import React, { useContext } from "react";
+import Input from "../../components/Input/Input";
+import AuthContext from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-    let {loginUser} = useContext(AuthContext)
-    return (
-        <div>
-            <form onSubmit={loginUser}>
-                <input type="text" name="email" placeholder="Enter email" />
-                <input type="password" name="password" placeholder="Enter Password" />
-                <input type="submit"/>
-            </form>
-        </div>
-    )
-}
+  let { loginUser } = useContext(AuthContext);
 
-export default Login
+  return (
+    <div className="login fc">
+      <div className="login__left fc">
+        <h2
+          style={{ color: "var(--primary-text-color)", marginBottom: ".75em" }}
+        >
+          Login
+        </h2>
+        <form className="login__form fc" onSubmit={loginUser}>
+          <Input
+            heading="Email"
+            type="email"
+            name="email"
+            placeholder="nietz@fettler.com"
+            details=""
+          />
+          <Input
+            heading="Password"
+            type="password"
+            placeholder="*********"
+            name="password"
+            details=""
+          />
+          <p style={{ fontSize: ".75em", marginTop: "-.6em" }}>
+            Don’t have an account?
+            <span
+              style={{ color: "var(--secondary-bg-color)", fontWeight: "800" }}
+            >
+              <Link to="/register">Register</Link>
+            </span>
+          </p>
+          <input
+            style={{
+              backgroundColor: "var(--primary-bg-color)",
+              color: "var(--white-black-text-color)",
+              marginTop: "1.25em",
+            }}
+            className="button"
+            type="submit"
+            value="Login"
+          />
+        </form>
+      </div>
+      <div className="login__company fc">
+        <h2 style={{ color: "#F3F4F6" }}>Fettler++</h2>
+        <h5 style={{ color: "#F3F4F6D0" }}>
+          We want you to be the best{" "}
+          <span style={{ color: "var(--secondary-bg-color)" }}>YOU</span>!
+        </h5>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

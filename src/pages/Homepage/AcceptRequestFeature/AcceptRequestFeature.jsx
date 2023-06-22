@@ -1,4 +1,3 @@
-import "./FeatureSection.styles.css";
 import images from "../../../assets/images";
 import Button from "../../../components/Button/Button";
 

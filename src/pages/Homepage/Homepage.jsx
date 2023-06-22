@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import Footer from "../../containers/Footer/Footer";
+import Header from "../../containers/Header/Header";
 import AuthContext from "../../context/AuthContext";
 import AcceptRequestFeature from "./AcceptRequestFeature/AcceptRequestFeature";
 import FeatureSection from "./FeatureSection/FeatureSection";
@@ -7,7 +9,8 @@ import SectionA from "./SectionA/SectionA";
 
 const Homepage = () => {
   //   let [notes, setNotes] = useState([]);
-  //   let { authTokens, logoutUser } = useContext(AuthContext);
+  let { authTokens, logoutUser, user } = useContext(AuthContext);
+  console.log(user);
 
   //   useEffect(() => {
   //     getNotes();
@@ -31,14 +34,21 @@ const Homepage = () => {
   //   };
 
   return (
-    <div
-      style={{ backgroundColor: "var(--primary-bg-color)", padding: "5rem 0" }}
-    >
-      <Hero />
-      <SectionA />
-      <FeatureSection />
-      <AcceptRequestFeature />
-    </div>
+    <>
+      <Header isHomepage={true} />
+      <div
+        style={{
+          backgroundColor: "var(--primary-bg-color)",
+          paddingBottom: "10rem",
+        }}
+      >
+        <Hero />
+        <SectionA />
+        <FeatureSection />
+        <AcceptRequestFeature />
+      </div>
+      <Footer isHomepage={true} />
+    </>
   );
 };
 

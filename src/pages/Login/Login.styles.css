@@ -1,0 +1,22 @@
+.login {
+  width: 100vw;
+}
+
+.login__left {
+  flex-direction: column;
+  flex: 1;
+}
+.login__form{
+    flex-direction: column;
+    gap: .5em;
+}
+
+.login__company {
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--primary-bg-color);
+}
+
+.login__company > h5 {
+}

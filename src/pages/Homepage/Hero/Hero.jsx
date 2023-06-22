@@ -21,7 +21,7 @@ const Hero = () => {
             style={{
               backgroundColor: "transparent",
               border: "1px solid #BCDCFF",
-              color: "var(--secondary-bg--color)",
+              color: "var(--secondary-bg-color)",
             }}
           />
         </div>

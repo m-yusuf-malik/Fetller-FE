@@ -6,25 +6,17 @@ section.home {
   justify-content: space-between;
 }
 
-h2 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 4rem;
-  letter-spacing: 0em;
-  text-align: left;
-  color: var(--secondary-bg--color);
-}
-
 .hero__buttons {
   justify-content: start;
   gap: 0.5rem;
+  margin-top: 1em;
 }
 
 .hero__texts {
   width: 40vw;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   justify-content: center;
 }
 
@@ -66,4 +58,13 @@ h2 {
   left: 13em;
 
   z-index: 1;
+}
+
+@media (max-width: 550px) {
+  .hero__texts {
+    width: 100vw;
+  }
+  .home__hero-imgs {
+    display: none;
+  }
 }
