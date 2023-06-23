@@ -10,7 +10,7 @@ import SectionA from "./SectionA/SectionA";
 const Homepage = () => {
   //   let [notes, setNotes] = useState([]);
   let { authTokens, logoutUser, user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   //   useEffect(() => {
   //     getNotes();

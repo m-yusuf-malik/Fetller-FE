@@ -1,0 +1,33 @@
+.recommend {
+  width: 100vw;
+  padding-bottom: 10em;
+}
+
+.recommend__hero {
+  padding: 10em 5em;
+  gap: 10em;
+}
+.recommend__hero-texts {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  flex: 1;
+}
+.recommend__hero-pics {
+  gap: 2em;
+  flex: 1;
+}
+.recommend__hero-pics > img {
+  width: 40%;
+}
+
+.recommend__hero-pics > img:nth-child(1) {
+  margin-top: 6em;
+}
+
+.recommend__whyus {
+  background-color: var(--primary-bg-color);
+  padding: 10em 5em;
+  flex-direction: column;
+  gap: 2em;
+}

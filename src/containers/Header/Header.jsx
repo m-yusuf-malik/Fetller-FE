@@ -10,7 +10,7 @@ const HeaderNav = ({ styles }) => {
   return (
     <div className="fc header-bottom" style={styles?.borders}>
       <Link to="/recommend">Recommender</Link>
-      <Link to="/recommend">Diet-plan</Link>
+      <Link to="/diet-plan">Diet-plan</Link>
       <Link to="/requests">Browse</Link>
       <Link to="/requests/publish">Publish</Link>
       <Link to="/recommend">About Us</Link>

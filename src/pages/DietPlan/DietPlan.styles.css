@@ -1,0 +1,26 @@
+.diet-plan {
+  padding: 10em 5em;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.diet-plan__table-conatiner {
+  width: 100%;
+}
+
+.diet-plan__table-header,
+.diet-plan__table-row {
+  justify-content: space-between;
+
+  padding: 1.5em 0;
+}
+
+.diet-plan__table-header > h4,
+.diet-plan__table-row > p,
+.diet-plan__table-row > a {
+  flex: 1;
+}
+
+.diet-plan__table-row > p {
+  text-align: center;
+}

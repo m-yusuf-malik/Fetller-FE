@@ -1,0 +1,16 @@
+.browse-requests {
+  flex-direction: column;
+  width: 100vw;
+  padding: 7.5rem 5rem;
+  justify-content: space-between;
+}
+
+.requests-container{
+    /* border: 1px solid; */
+    margin: 2em 0;
+    width: 100%;
+    gap: 1em;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+}

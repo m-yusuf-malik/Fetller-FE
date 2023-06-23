@@ -5,11 +5,12 @@ import { AuthProvider } from "./context/AuthContext";
 import Homepage from "./pages/Homepage/Homepage";
 import Login from "./pages/Login/Login";
 import Header from "./containers/Header/Header";
-import Recommender from "./pages/Recommender/Recommender";
+import Recommend from "./pages/Recommend/Recommend";
 import Footer from "./containers/Footer/Footer";
 import Register from "./pages/Register/Register";
 import PublishRequest from "./pages/PublishRequest/PublishRequest";
 import BrowseRequests from "./pages/BrowseRequests/BrowseRequests";
+import DietPlan from "./pages/DietPlan/DietPlan";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<PrivateRoute />}>
               <Route exact path="" element={<Homepage />} />
-              <Route exact path="/recommend" element={<Recommender />} />
+              <Route exact path="/recommend" element={<Recommend />} />
+              <Route exact path="/diet-plan" element={<DietPlan />} />
               <Route path="/requests">
                 <Route path="publish" element={<PublishRequest />} />
                 <Route path="" element={<BrowseRequests />} />

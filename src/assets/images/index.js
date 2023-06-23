@@ -7,6 +7,10 @@ import heroVector from "./heroVector.png";
 import heroFirst from "./heroFirst.jpg";
 import heroSecond from "./heroSecond.jpg";
 import heroThird from "./heroThird.jpg";
+import reqImg from "./req.webp";
+import proImg from "./pro.png";
+import boyRecommend from "./boyRecommend.png";
+import girlRecommend from "./girlRecommend.png";
 
 export default {
   heroImg,
@@ -18,4 +22,8 @@ export default {
   heroFirst,
   heroSecond,
   heroThird,
+  reqImg,
+  proImg,
+  boyRecommend,
+  girlRecommend,
 };
