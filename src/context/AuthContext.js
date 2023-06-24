@@ -53,29 +53,31 @@ export const AuthProvider = ({ children }) => {
   };
 
   let updateToken = async (refresh) => {
-    let response = await fetch("http://127.0.0.1:8000/api/token/refresh", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refresh: authTokens?.refresh }),
-    });
+    try {
+      let response = await fetch("http://127.0.0.1:8000/api/token/refresh", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh: authTokens?.refresh }),
+      });
 
-    let data = await response.json();
+      let data = await response.json();
 
-    if (refresh) setAuthTokens({ ...authTokens, refresh });
+      if (refresh) setAuthTokens({ ...authTokens, refresh });
 
-    if (response.status === 200 || response.data === "token_not_valid") {
-      setAuthTokens({ ...authTokens, access: data.access });
-      setUser(jwt_decode(data.access));
-      localStorage.setItem("authTokens", JSON.stringify(authTokens));
-    } else {
-      logoutUser();
-    }
+      if (response.status === 200 || response.data === "token_not_valid") {
+        setAuthTokens({ ...authTokens, access: data.access });
+        setUser(jwt_decode(data.access));
+        localStorage.setItem("authTokens", JSON.stringify(authTokens));
+      } else {
+        logoutUser();
+      }
 
-    if (loading) {
-      setLoading(false);
-    }
+      if (loading) {
+        setLoading(false);
+      }
+    } catch (error) {}
   };
 
   let contextData = {
@@ -94,7 +96,7 @@ export const AuthProvider = ({ children }) => {
       updateToken(refresh);
     }
 
-    let fourMinutes = 1000 * 2;
+    let fourMinutes = 1000 * 60 * 4;
 
     let interval = setInterval(() => {
       if (authTokens) {

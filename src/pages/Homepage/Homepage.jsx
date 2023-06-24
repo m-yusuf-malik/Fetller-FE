@@ -1,7 +1,7 @@
+import AuthContext from "../../context/AuthContext";
 import React, { useState, useEffect, useContext } from "react";
 import Footer from "../../containers/Footer/Footer";
 import Header from "../../containers/Header/Header";
-import AuthContext from "../../context/AuthContext";
 import AcceptRequestFeature from "./AcceptRequestFeature/AcceptRequestFeature";
 import FeatureSection from "./FeatureSection/FeatureSection";
 import Hero from "./Hero/Hero";

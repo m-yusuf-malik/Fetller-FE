@@ -11,6 +11,7 @@ import Register from "./pages/Register/Register";
 import PublishRequest from "./pages/PublishRequest/PublishRequest";
 import BrowseRequests from "./pages/BrowseRequests/BrowseRequests";
 import DietPlan from "./pages/DietPlan/DietPlan";
+import RequestDetails from "./pages/RequestDetails/RequestDetails";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/requests">
                 <Route path="publish" element={<PublishRequest />} />
                 <Route path="" element={<BrowseRequests />} />
+                <Route path="/requests/:id" element={<RequestDetails />} />
               </Route>
             </Route>
             <Route element={<Login />} path="/login" />

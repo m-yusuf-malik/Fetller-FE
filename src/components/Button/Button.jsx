@@ -1,8 +1,8 @@
 import "./Button.Styles.css";
 
-const Button = (props) => {
+const Button = ({ ...props }) => {
   return (
-    <button style={props.style} className="button">
+    <button {...props} className="button">
       {props.text}
     </button>
   );

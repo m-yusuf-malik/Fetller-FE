@@ -1,7 +1,7 @@
 .request-card {
   flex-direction: column;
   border: 1px solid var(--primary-bg-color);
-  width: 22.5%;
+  width: 23.5%;
   height: 22.5vw;
   background-color: #f9fafb;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
@@ -10,6 +10,19 @@
 }
 
 .request-card > img {
-  width: 85%;
+  max-width: 75%;
+  max-height: 75%;
   flex-grow: 1;
+  filter: drop-shadow(
+    5px 10px 8px rgba(0, 0, 0, 0.2)
+  );
+}
+
+@media (max-width: 850px) {
+  .request-card {
+    width: 40%;
+    height: 25%;
+    margin-bottom: 5em;
+
+  }
 }

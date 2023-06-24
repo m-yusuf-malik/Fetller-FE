@@ -1,0 +1,20 @@
+.div-table__table-conatiner {
+    width: 100%;
+  }
+  
+  .div-table__table-header,
+  .div-table__table-row {
+    justify-content: space-between;
+  
+    padding: 1.5em 0;
+  }
+  
+  .div-table__table-header > h4,
+  .div-table__table-row > p,
+  .div-table__table-row > a {
+    flex: 1;
+  }
+  
+  .div-table__table-row > p {
+    text-align: center;
+  }

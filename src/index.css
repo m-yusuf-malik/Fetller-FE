@@ -40,19 +40,19 @@ body {
 @media (max-width: 1280px) {
   html {
     font-size: 10px;
-    border: 5px solid;
+    /* border: 5px solid; */
   }
 }
 @media (max-width: 850px) {
   html {
     font-size: 7px;
-    border: 5px solid;
+    /* border: 5px solid; */
   }
 }
 @media (max-width: 550px) {
   html {
     font-size: 6px;
-    border: 5px solid;
+    /* border: 5px solid; */
   }
   .fc {
     flex-wrap: wrap;
