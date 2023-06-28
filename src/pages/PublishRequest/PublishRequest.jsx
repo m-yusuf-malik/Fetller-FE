@@ -48,7 +48,6 @@ const PublishRequest = () => {
   };
 
   const handleClick = async (event) => {
-    console.log("HI");
     event.preventDefault();
 
     try {

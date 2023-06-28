@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import "./Recommend.styles.css";
@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const Recommend = () => {
   const { boyRecommend, girlRecommend } = images;
-  const { authTokens, user } = useContext(AuthContext);
+  const { authTokens } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Recommend = () => {
   const [errors, setErrors] = useState(null);
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files);
+    setSelectedFile(event.target.files[0]);
     // handleClick(event);
   };
 
@@ -36,14 +36,14 @@ const Recommend = () => {
 
       const formData = new FormData();
 
-      formData.append("image", selectedFile[0]);
+      formData.append("image", selectedFile);
 
       await axios
         .post(`${process.env.REACT_APP_DOMAIN_URL}/recommend`, formData, {
           headers: {
             Authorization: `Bearer ${String(authTokens.access)}`,
           },
-          "Content-Type": "multipart/form-data",
+          // "Content-Type": "multipart/form-data",
         })
         .then((response) => {
           setBodyData(response.data);
@@ -57,14 +57,14 @@ const Recommend = () => {
       console.error(error);
       setIsLoading(false);
     }
-    bodyData
-      ? alert(
-          "Body type: " +
-            bodyData.body_type +
-            "\nBody Model: " +
-            bodyData.body_model
-        )
-      : alert("Error");
+    // bodyData
+    //   ? alert(
+    //       "Body type: " +
+    //         bodyData.body_type +
+    //         "\nBody Model: " +
+    //         bodyData.body_model
+    //     )
+    //   : alert(String(errors));
   };
 
   return (

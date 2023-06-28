@@ -1,3 +1,10 @@
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import AuthContext from "../../context/AuthContext";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
 import "./Register.styles.css";
 
 import Input from "../../components/Input/Input";
@@ -5,6 +12,60 @@ import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { authTokens, user } = useContext(AuthContext);
+
+  const [formsData, setFormsData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    phone_number: "",
+    country: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormsData((prevFormsData) => ({
+      ...prevFormsData,
+      [name]: value,
+    }));
+  };
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      setIsLoading(true);
+
+      const formData = new FormData();
+
+      formData.append("username", formsData.username);
+      formData.append("email", formsData.email);
+      formData.append("password", formsData.password);
+      formData.append("country", formsData.country);
+      formData.append("phone_number", formsData.phone_number);
+
+      axios
+        .post(`${process.env.REACT_APP_DOMAIN_URL}/register`, formData)
+        .then((response) => {
+          navigate("/login");
+        })
+        .catch((error) => {
+          setErrors(error.response.data.errors.errorw);
+        });
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+  };
+
+  console.log(errors)
+
   return (
     <div className="login fc">
       <div className="login__company fc">
@@ -26,6 +87,9 @@ const Register = () => {
             type="text"
             name="username"
             placeholder="nietz"
+            value={formsData.username}
+            onChange={handleChange}
+            details={errors?.username}
             details=""
           />{" "}
           <Input
@@ -33,28 +97,36 @@ const Register = () => {
             type="email"
             name="email"
             placeholder="nietz@fettler.com"
-            details=""
+            value={formsData.email}
+            onChange={handleChange}
+            details={errors?.email}
           />
           <Input
             heading="Password"
             type="password"
             placeholder="*********"
             name="password"
-            details=""
+            value={formsData.password}
+            onChange={handleChange}
+            details={errors?.password}
           />
           <Input
             heading="Country"
             type="text"
             placeholder="Norway"
             name="country"
-            details=""
+            value={formsData.country}
+            onChange={handleChange}
+            details={errors?.country}
           />
           <Input
             heading="Phone number"
             type="text"
             placeholder="+4781632900"
             name="phone_number"
-            details=""
+            value={formsData.phone_number}
+            onChange={handleChange}
+            details={errors?.phone_number}
           />
           <p style={{ fontSize: ".75em", marginTop: "-.6em" }}>
             Already have an account?
@@ -71,6 +143,7 @@ const Register = () => {
               color: "var(--white-black-text-color)",
               marginTop: "1.25em",
             }}
+            onClick={handleClick}
           />
         </div>
       </div>
