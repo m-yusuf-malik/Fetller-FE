@@ -10,7 +10,7 @@ import AuthContext from "../../context/AuthContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Requests = () => {
-  const { authTokens, user } = useContext(AuthContext);
+  const { authTokens } = useContext(AuthContext);
 
   const [requests, setRequets] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +20,7 @@ const Requests = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_DOMAIN_URL}/requests`,
+        `${process.env.REACT_APP_API_DOMAIN_URL}/requests`,
         {
           headers: {
             Authorization: `Bearer ${String(authTokens.access)}`,

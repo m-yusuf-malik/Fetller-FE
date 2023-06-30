@@ -14,7 +14,7 @@ import "./RequestDetails.styles.css";
 const RequestDetails = () => {
   const { id } = useParams();
 
-  const { authTokens, user } = useContext(AuthContext);
+  const { authTokens } = useContext(AuthContext);
 
   const [request, setRequet] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +24,7 @@ const RequestDetails = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_DOMAIN_URL}/requests/${id}`,
+        `${process.env.REACT_APP_API_DOMAIN_URL}/requests/${id}`,
         {
           headers: {
             Authorization: `Bearer ${String(authTokens.access)}`,
@@ -53,7 +53,7 @@ const RequestDetails = () => {
         <main className="request-details__main fc">
           <h3>{request.title}</h3>
           <div className="request-details__container fc">
-            <div className="request-details__img-container">
+            <div className="request-details__img-container fc">
               <img src={request.image} alt="" />
             </div>
             <div className="request-details__main-texts fc">
@@ -83,7 +83,7 @@ const RequestDetails = () => {
               </div>
 
               <Button
-                text="confirm"
+                text="Confirm"
                 style={{
                   backgroundColor: "var(--primary-bg-color)",
                   color: "var(--white-black-text-color)",

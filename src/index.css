@@ -62,3 +62,23 @@ body {
     width: 100vw;
   }
 }
+
+
+::-webkit-scrollbar {
+  width: 2.5px;
+}
+
+/* Track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: var(--primary-bg-color);
+}
+
+/* Handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: var(--tertiary-bg-color);
+}
+
+/* On hover, style the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

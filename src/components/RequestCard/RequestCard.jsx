@@ -2,7 +2,7 @@ import "./RequestCard.styles.css";
 import { Link } from "react-router-dom";
 
 const RequestCard = ({ id, title, price, city, country, image }) => {
-  const imgUrl = `${process.env.REACT_APP_DOMAIN}/${image}`;
+  const imgUrl = `${process.env.REACT_APP_DOMAIN_URL}${image}`;
 
   return (
     <Link to={`/requests/${id}`} className="request-card fc">
@@ -13,7 +13,7 @@ const RequestCard = ({ id, title, price, city, country, image }) => {
         <p>$ {price}</p>
       </div>
       <img src={imgUrl} alt="" />
-      <p style={{ fontWeight: "700", alignSelf: "center" }}>
+      <p style={{ fontWeight: "700", marginTop:'1em' }}>
         {city}, {country}
       </p>
     </Link>

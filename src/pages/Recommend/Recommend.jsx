@@ -39,11 +39,11 @@ const Recommend = () => {
       formData.append("image", selectedFile);
 
       await axios
-        .post(`${process.env.REACT_APP_DOMAIN_URL}/recommend`, formData, {
+        .post(`${process.env.REACT_APP_API_DOMAIN_URL}/recommend`, formData, {
           headers: {
             Authorization: `Bearer ${String(authTokens.access)}`,
           },
-          // "Content-Type": "multipart/form-data",
+          "Content-Type": "multipart/form-data",
         })
         .then((response) => {
           setBodyData(response.data);

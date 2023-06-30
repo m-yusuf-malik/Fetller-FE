@@ -25,7 +25,7 @@ const AcceptRequestFeature = () => {
           style={{
             marginTop: "1rem",
             backgroundColor: "transparent",
-            border: "1px solid #BCDCFF",
+            // border: "1px solid #BCDCFF",
             color: "var(--black-text-color)",
             border: "1px solid var(--black-text-color)",
           }}

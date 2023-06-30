@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -65,7 +65,7 @@ const PublishRequest = () => {
       if (selectedFile) formData.append("image", selectedFile[0]);
 
       axios
-        .post(`${process.env.REACT_APP_DOMAIN_URL}/requests`, formData, {
+        .post(`${process.env.REACT_APP_API_DOMAIN_URL}/requests`, formData, {
           headers: {
             Authorization: `Bearer ${String(authTokens.access)}`,
           },
@@ -118,6 +118,8 @@ const PublishRequest = () => {
                 value={formsData.description}
                 onChange={handleChange}
               ></textarea>
+              {errors?.description && <span>{errors?.description}</span>}
+
             </div>
             <Input
               heading="Address"

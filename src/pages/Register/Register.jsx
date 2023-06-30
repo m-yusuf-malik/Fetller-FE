@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import AuthContext from "../../context/AuthContext";
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+// import AuthContext from "../../context/AuthContext";
+// import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 import "./Register.styles.css";
 
@@ -13,7 +13,6 @@ import Button from "../../components/Button/Button";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { authTokens, user } = useContext(AuthContext);
 
   const [formsData, setFormsData] = useState({
     username: "",
@@ -50,7 +49,7 @@ const Register = () => {
       formData.append("phone_number", formsData.phone_number);
 
       axios
-        .post(`${process.env.REACT_APP_DOMAIN_URL}/register`, formData)
+        .post(`${process.env.REACT_APP_API_DOMAIN_URL}/register`, formData)
         .then((response) => {
           navigate("/login");
         })
@@ -90,8 +89,7 @@ const Register = () => {
             value={formsData.username}
             onChange={handleChange}
             details={errors?.username}
-            details=""
-          />{" "}
+          />
           <Input
             heading="Email"
             type="email"

@@ -1,6 +1,6 @@
 .diet-plan {
   padding: 10em 5em;
-  width: 100vw;
+  /* width: 100vw; */
   flex-direction: column;
 }
 

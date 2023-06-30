@@ -1,5 +1,5 @@
 import AuthContext from "../../context/AuthContext";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Footer from "../../containers/Footer/Footer";
 import Header from "../../containers/Header/Header";
 import AcceptRequestFeature from "./AcceptRequestFeature/AcceptRequestFeature";
@@ -8,8 +8,7 @@ import Hero from "./Hero/Hero";
 import SectionA from "./SectionA/SectionA";
 
 const Homepage = () => {
-  //   let [notes, setNotes] = useState([]);
-  let { authTokens, logoutUser, user } = useContext(AuthContext);
+  // let { authTokens, logoutUser, user } = useContext(AuthContext);
   // console.log(user);
 
   //   useEffect(() => {
