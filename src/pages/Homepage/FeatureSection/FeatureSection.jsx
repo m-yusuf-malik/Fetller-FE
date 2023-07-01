@@ -21,7 +21,7 @@ const FeatureSection = () => {
         />
       </div>
       <img
-        style={{ flex: "2", height: "50em", width: "50em" }}
+        style={{ flex: "2", height: "60em", width: "40em" }}
         src={requestFeatureSection}
         alt="RequestFeature"
       />

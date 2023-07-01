@@ -31,3 +31,16 @@
   flex-direction: column;
   gap: 2em;
 }
+
+
+.toast-message {
+  /* background: darkblue; */
+  /* color: #fff; */
+  /* font-size: 20px; */
+  /* width:  fit-content; */
+  /* padding: 30px 20px; */
+  /* text-align: ; */
+  /* position: absolute ; */
+  /* right: 0; */
+  /* bottom: 0vw; */
+}

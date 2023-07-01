@@ -18,7 +18,7 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
-    phone_number: "",
+    phone: "",
     country: "",
   });
 
@@ -46,7 +46,7 @@ const Register = () => {
       formData.append("email", formsData.email);
       formData.append("password", formsData.password);
       formData.append("country", formsData.country);
-      formData.append("phone_number", formsData.phone_number);
+      formData.append("phone", formsData.phone);
 
       axios
         .post(`${process.env.REACT_APP_API_DOMAIN_URL}/register`, formData)
@@ -54,7 +54,7 @@ const Register = () => {
           navigate("/login");
         })
         .catch((error) => {
-          setErrors(error.response.data.errors.errorw);
+          setErrors(error.response.data.errors.error);
         });
       setIsLoading(false);
     } catch (error) {
@@ -121,10 +121,10 @@ const Register = () => {
             heading="Phone number"
             type="text"
             placeholder="+4781632900"
-            name="phone_number"
-            value={formsData.phone_number}
+            name="phone"
+            value={formsData.phone}
             onChange={handleChange}
-            details={errors?.phone_number}
+            details={errors?.phone}
           />
           <p style={{ fontSize: ".75em", marginTop: "-.6em" }}>
             Already have an account?

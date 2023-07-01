@@ -1,5 +1,7 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect } from 'react';
+
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 import Homepage from "./pages/Homepage/Homepage";
@@ -11,10 +13,22 @@ import BrowseRequests from "./pages/BrowseRequests/BrowseRequests";
 import DietPlan from "./pages/DietPlan/DietPlan";
 import RequestDetails from "./pages/RequestDetails/RequestDetails";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
+
   return (
     <div>
       <Router>
+        <ScrollToTop />
         <AuthProvider>
           <Routes>
             <Route exact path="/" element={<PrivateRoute />}>

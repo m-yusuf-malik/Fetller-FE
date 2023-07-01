@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./Recommend.styles.css";
 import Header from "../../containers/Header/Header";
@@ -23,9 +25,23 @@ const Recommend = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState(null);
 
+  const alertError = (error) => toast.error(error, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    className: 'toast-message'
+
+  })
+
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-    // handleClick(event);
+
+    // handleClick();
   };
 
   const handleClick = async () => {
@@ -47,14 +63,22 @@ const Recommend = () => {
         })
         .then((response) => {
           setBodyData(response.data);
-          navigate("/diet-plan");
+          if (response.status === 200) navigate("/diet-plan");
+
         })
         .catch((error) => {
-          setErrors(error.response.data.errors);
+          // console.log(error);
+
+          if (error.message === 'Network Error') alertError('Server is down')
+
+
+          setErrors(error.response.data.error);
+          alertError(error.response.data?.error || error.response.data?.image[0])
+
         });
       setIsLoading(false);
     } catch (error) {
-      console.error(error);
+      // console.log(error);
       setIsLoading(false);
     }
     // bodyData
@@ -66,6 +90,14 @@ const Recommend = () => {
     //     )
     //   : alert(String(errors));
   };
+
+  useEffect(() => {
+    if (selectedFile) {
+      handleClick();
+    }
+
+    // if (errors) alertError()
+  }, [selectedFile]);
 
   return (
     <>
@@ -91,10 +123,7 @@ const Recommend = () => {
                     id="file-input"
                     name="image"
                     style={{ display: "none" }}
-                    onChange={(event) => {
-                      handleFileChange(event);
-                      handleClick();
-                    }}
+                    onChange={handleFileChange}
                   />
                   <label
                     htmlFor="file-input"
@@ -104,8 +133,8 @@ const Recommend = () => {
                       color: "var(--white-black-text-color)",
                       padding: ".75em 2em",
                     }}
-                    // onChange={handleClick}
-                    // onClick={() => handleClick}
+                  // onChange={handleClick}
+                  // onClick={() => handleClick}
                   >
                     Upload
                   </label>
@@ -118,6 +147,8 @@ const Recommend = () => {
             </div>
           </section>
         )}
+        <ToastContainer />
+
         <section className="recommend__whyus fc">
           <h3 style={{ fontWeight: "800", color: "var(--tertiary-bg-color)" }}>
             Why us

@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
+  const [loginErrors, setLoginErrors] = useState(null)
   let [user, setUser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwt_decode(localStorage.getItem("authTokens"))
@@ -41,7 +42,9 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("authTokens", JSON.stringify(data));
       navigate("/");
     } else {
-      alert("Something went wrong!");
+      setLoginErrors(data.errors)
+      // console.log(data.errors)
+      // alert("Something went wrong!");
     }
   };
 
@@ -70,14 +73,18 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens({ ...authTokens, access: data.access });
         setUser(jwt_decode(data.access));
         localStorage.setItem("authTokens", JSON.stringify(authTokens));
-      } else {
+      }
+
+      else {
         logoutUser();
       }
 
       if (loading) {
         setLoading(false);
       }
-    } catch (error) {}
+    } catch (error) {
+        // logoutUser();
+    }
   };
 
   let contextData = {
@@ -85,6 +92,7 @@ export const AuthProvider = ({ children }) => {
     authTokens: authTokens,
     loginUser: loginUser,
     logoutUser: logoutUser,
+    loginErrors
   };
 
   useEffect(() => {

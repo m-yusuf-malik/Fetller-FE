@@ -6,7 +6,9 @@ import AuthContext from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  let { loginUser } = useContext(AuthContext);
+  let { loginErrors, loginUser } = useContext(AuthContext);
+
+  console.log(loginErrors)
 
   return (
     <div className="login fc">
@@ -22,15 +24,16 @@ const Login = () => {
             type="email"
             name="email"
             placeholder="nietz@fettler.com"
-            details=""
+            details={loginErrors?.email}
           />
           <Input
             heading="Password"
             type="password"
             placeholder="*********"
             name="password"
-            details=""
+            details={loginErrors?.password}
           />
+            {loginErrors?.detail && <span style={{marginBottom:'1em'}} className="errors-field">{loginErrors?.detail}</span>}
           <p style={{ fontSize: ".75em", marginTop: "-.6em" }}>
             Don’t have an account?
             <span
@@ -39,6 +42,7 @@ const Login = () => {
               <Link to="/register">Register</Link>
             </span>
           </p>
+
           <input
             style={{
               backgroundColor: "var(--primary-bg-color)",

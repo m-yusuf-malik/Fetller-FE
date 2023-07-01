@@ -10,7 +10,7 @@ const AcceptRequestFeature = () => {
       style={{ gap: "10em", backgroundColor: "#F3F4F6" }}
     >
       <img
-        style={{ flex: "2", height: "50em", width: "50em" }}
+        style={{ flex: "2", height: "60em", width: "40em" }}
         src={acceptRequestFeature}
         alt="RequestFeature"
       />

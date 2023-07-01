@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import AuthContext from "../../context/AuthContext";
@@ -13,6 +13,7 @@ import "./RequestDetails.styles.css";
 
 const RequestDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
 
   const { authTokens } = useContext(AuthContext);
 
@@ -43,6 +44,28 @@ const RequestDetails = () => {
   useEffect(() => {
     usefetchRequestDetails();
   }, []);
+
+  const confirmOrder = async () => {
+    try {
+      setIsLoading(true);
+      await axios.post(
+        `${process.env.REACT_APP_API_DOMAIN_URL}/requests/${id}/order`, {},
+        {
+          headers: {
+            Authorization: `Bearer ${String(authTokens.access)}`,
+          },
+        }
+      );
+
+      navigate('/')
+
+
+    } catch (error) {
+      setErrors(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -79,7 +102,7 @@ const RequestDetails = () => {
               </div>
               <div>
                 <h5>Receiver phone number</h5>
-                <p>{request.phone_number}</p>
+                <p>{request.phone}</p>
               </div>
 
               <Button
@@ -89,6 +112,7 @@ const RequestDetails = () => {
                   color: "var(--white-black-text-color)",
                   marginTop: "2em",
                 }}
+                onClick={confirmOrder}
               />
             </div>
           </div>
