@@ -6,6 +6,8 @@ const Footer = ({ isHomepage }) => {
     footer: {
       backgroundColor: "var(--white-75-color)",
       color: "var(--black-75-color)",
+      borderTop: "0.5px solid var(--black-75-color)"
+
     },
     names: {
       color: "var(--black-75-color)",

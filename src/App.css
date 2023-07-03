@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+.fcc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 p {
   font-family: Lato;
   font-size: 1rem;
@@ -20,6 +27,7 @@ h5,
 h6 {
   font-family: "Oswald", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: var(--primary-bg-color);
 }
 
 h2 {
@@ -48,7 +56,8 @@ h4 {
   text-align: center;
 }
 
-h5, .haha {
+h5,
+.haha {
   font-style: normal;
   font-weight: 700;
   font-size: 1.5rem;
