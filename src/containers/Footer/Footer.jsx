@@ -40,7 +40,6 @@ const Footer = ({ isHomepage }) => {
         <h5 style={{ paddingBottom: ".5em" }}>Company</h5>
         <span>Recommender</span>
         <span>Publish</span>
-        <span>Publish</span>
         <span>Browse</span>
         <span>Diet-plan</span>
       </div>

@@ -46,9 +46,11 @@ const Header = ({ isHomepage }) => {
         </Link>
         {user ? (
           <div className="header-account fc">
-            <span>{user.username}</span>
-            <FaUser size="1.25em" />
-            <AiFillStar color="gold" />
+            <Link to='/account' className="fc header-account">
+              <span>{user?.name || user?.username}</span>
+              <FaUser size="1.25em" />
+              <AiFillStar color="gold" />
+            </Link>
             <HiLogout onClick={logoutUser} />
           </div>
         ) : (

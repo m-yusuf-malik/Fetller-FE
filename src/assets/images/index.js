@@ -11,6 +11,8 @@ import reqImg from "./req.webp";
 import proImg from "./pro.png";
 import boyRecommend from "./boyRecommend.png";
 import girlRecommend from "./girlRecommend.png";
+import dietBG from "./diet-bg.png"
+import accountBG from "./account-bg.webp"
 
 export default {
   heroImg,
@@ -26,4 +28,6 @@ export default {
   proImg,
   boyRecommend,
   girlRecommend,
+  dietBG,
+  accountBG,
 };

@@ -63,7 +63,6 @@ const Register = () => {
     }
   };
 
-  console.log(errors)
 
   return (
     <div className="login fc">

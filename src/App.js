@@ -12,6 +12,7 @@ import PublishRequest from "./pages/PublishRequest/PublishRequest";
 import BrowseRequests from "./pages/BrowseRequests/BrowseRequests";
 import DietPlan from "./pages/DietPlan/DietPlan";
 import RequestDetails from "./pages/RequestDetails/RequestDetails";
+import Account from "./pages/Account/Account";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ function App() {
               <Route exact path="" element={<Homepage />} />
               <Route exact path="/recommend" element={<Recommend />} />
               <Route exact path="/diet-plan" element={<DietPlan />} />
+              <Route exact path="/account" element={<Account />} />
               <Route path="/requests">
                 <Route path="publish" element={<PublishRequest />} />
                 <Route path="" element={<BrowseRequests />} />

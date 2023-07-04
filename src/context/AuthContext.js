@@ -83,16 +83,16 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
       }
     } catch (error) {
-        // logoutUser();
+      // logoutUser();
     }
   };
 
   let contextData = {
-    user: user,
-    authTokens: authTokens,
-    loginUser: loginUser,
-    logoutUser: logoutUser,
-    loginErrors
+    user,
+    authTokens,
+    loginUser,
+    logoutUser,
+    loginErrors,
   };
 
   useEffect(() => {

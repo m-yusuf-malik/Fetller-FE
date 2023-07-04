@@ -60,7 +60,7 @@ const PublishRequest = () => {
       formData.append("address", formsData.address);
       formData.append("city", formsData.city);
       formData.append("country", formsData.country);
-      formData.append("phone", formsData.phone);
+      formData.append("phone_number", formsData.phone);
       formData.append("price", formsData.price);
       if (selectedFile) formData.append("image", selectedFile[0]);
 

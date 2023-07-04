@@ -7,21 +7,24 @@
   padding: 10em 5em;
   gap: 10em;
 }
+
 .recommend__hero-texts {
   flex-direction: column;
   align-items: flex-start;
   gap: 1em;
   flex: 1;
 }
+
 .recommend__hero-pics {
   gap: 2em;
   flex: 1;
 }
-.recommend__hero-pics > img {
+
+.recommend__hero-pics>img {
   width: 40%;
 }
 
-.recommend__hero-pics > img:nth-child(1) {
+.recommend__hero-pics>img:nth-child(1) {
   margin-top: 6em;
 }
 
@@ -34,13 +37,14 @@
 
 
 .toast-message {
-  /* background: darkblue; */
-  /* color: #fff; */
-  /* font-size: 20px; */
-  /* width:  fit-content; */
-  /* padding: 30px 20px; */
-  /* text-align: ; */
-  /* position: absolute ; */
-  /* right: 0; */
-  /* bottom: 0vw; */
+  /* background: darkblue;
+  color: #fff;
+  font-size: 20px;
+  width: fit-content;
+  padding: 30px 20px;
+  text-align:center ;
+  position: absolute;
+  right: 0;
+  bottom: 0vw; */
+  z-index: 7;
 }

@@ -80,5 +80,5 @@ body {
 
 /* On hover, style the scrollbar thumb */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #e1dede;
 }

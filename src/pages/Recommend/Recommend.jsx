@@ -8,6 +8,7 @@ import Header from "../../containers/Header/Header";
 import Footer from "../../containers/Footer/Footer";
 // import Button from "../../components/Button/Button";
 import images from "../../assets/images";
+import data from "../../assets/data";
 
 import AuthContext from "../../context/AuthContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
@@ -16,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 const Recommend = () => {
   const { boyRecommend, girlRecommend } = images;
   const { authTokens } = useContext(AuthContext);
+  const { toastOptions } = data;
 
   const navigate = useNavigate();
 
@@ -25,18 +27,8 @@ const Recommend = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState(null);
 
-  const alertError = (error) => toast.error(error, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    className: 'toast-message'
-
-  })
+  const errorAlert = (text) => toast.error(text, toastOptions)
+  const successAlert = (text) => toast.success(text, toastOptions)
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -63,17 +55,18 @@ const Recommend = () => {
         })
         .then((response) => {
           setBodyData(response.data);
-          if (response.status === 200) navigate("/diet-plan");
+          successAlert("Diet-plan made!")
+          if (response.status === 201) navigate("/diet-plan");
 
         })
         .catch((error) => {
           // console.log(error);
 
-          if (error.message === 'Network Error') alertError('Server is down')
+          if (error.message === 'Network Error') errorAlert('Server is down')
 
 
           setErrors(error.response.data.error);
-          alertError(error.response.data?.error || error.response.data?.image[0])
+          errorAlert(error.response.data?.error || error.response.data?.image[0])
 
         });
       setIsLoading(false);
