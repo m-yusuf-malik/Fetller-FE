@@ -1,7 +1,12 @@
 import "./App.css";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 import Homepage from "./pages/Homepage/Homepage";
@@ -13,19 +18,19 @@ import BrowseRequests from "./pages/BrowseRequests/BrowseRequests";
 import DietPlan from "./pages/DietPlan/DietPlan";
 import RequestDetails from "./pages/RequestDetails/RequestDetails";
 import Account from "./pages/Account/Account";
+import NotFound from "./pages/NotFound/NotFound";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
 
   return null;
 }
 
 function App() {
-
   return (
     <div>
       <Router>
@@ -45,7 +50,7 @@ function App() {
             </Route>
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />
-            <Route path="*" element={<h1 className="fc">Not Found</h1>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
       </Router>

@@ -34,7 +34,10 @@ section.home {
   height: 20em;
 }
 
-.home__hero-imgs > img:nth-child(1) {
+
+.home__hero-imgs > img:nth-child(n+2):hover {
+  z-index: 7 !important;
+
 }
 
 .home__hero-imgs > img:nth-child(n + 2):nth-child(-n + 4) {
