@@ -36,8 +36,9 @@ section.home {
 
 
 .home__hero-imgs > img:nth-child(n+2):hover {
-  z-index: 7 !important;
-
+  z-index: 3 !important;
+  box-shadow: 2px 3px .5rem .25rem var(--primary-bg-color);
+  border-radius: .25rem;
 }
 
 .home__hero-imgs > img:nth-child(n + 2):nth-child(-n + 4) {

@@ -186,6 +186,7 @@ const Account = () => {
                                     value={userData?.score}
                                     onChange={handleChange}
                                     details={errors?.score}
+                                    disabled
                                 />
                                 <div className="input-field fc" style={{ flexDirection: 'row', gap: '1.5rem', fontSize: '1.5rem' }}>
                                     <h6>Batch: </h6>
