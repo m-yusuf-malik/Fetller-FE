@@ -1,6 +1,6 @@
 const toastOptions = {
     position: "bottom-right",
-    autoClose: 5000,
+    autoClose: 2500,
     hideProgressBar: false,
     closeOnClick: false,
     pauseOnHover: true,

@@ -17,8 +17,6 @@ const Requests = ({ paramsUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
 
-  console.log(paramsUrl)
-
   useEffect(() => {
     const usefetchAllRequests = async () => {
       try {
@@ -41,7 +39,6 @@ const Requests = ({ paramsUrl }) => {
     };
 
     usefetchAllRequests();
-
   }, [paramsUrl]);
 
   return (
@@ -61,23 +58,25 @@ const Requests = ({ paramsUrl }) => {
 };
 
 const BrowseRequests = () => {
-  const [search, setSearch] = useState('');
-  const [sortBy, setSortBy] = useState('');
-  const [requestParamsUrl, setRequestParamsUrl] = useState('')
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const [requestParamsUrl, setRequestParamsUrl] = useState("");
 
   const handleSearch = (event) => {
-    setSearch(event.target.value)
-    setRequestParamsUrl(`?search=${event.target.value}`)
+    setSearch(event.target.value);
+    setRequestParamsUrl(`?search=${event.target.value}`);
 
-    if (sortBy != '') setRequestParamsUrl(`search=${event.target.value}&ordering=${sortBy}`)
-    else setRequestParamsUrl(`search=${event.target.value}`)
+    if (sortBy != "")
+      setRequestParamsUrl(`search=${event.target.value}&ordering=${sortBy}`);
+    else setRequestParamsUrl(`search=${event.target.value}`);
   };
 
   const handleSortChange = (event) => {
     setSortBy(event.target.value);
 
-    if (search != '') setRequestParamsUrl(`search=${search}&ordering=${event.target.value}`)
-    else setRequestParamsUrl(`ordering=${event.target.value}`)
+    if (search != "")
+      setRequestParamsUrl(`search=${search}&ordering=${event.target.value}`);
+    else setRequestParamsUrl(`ordering=${event.target.value}`);
   };
 
   return (
@@ -104,7 +103,6 @@ const BrowseRequests = () => {
             value={search}
             onChange={handleSearch}
           />
-
         </div>
         <Requests paramsUrl={requestParamsUrl} />
       </main>

@@ -7,13 +7,16 @@ import { FaUser } from "react-icons/fa";
 import { HiLogout } from "react-icons/hi";
 
 const HeaderNav = ({ styles }) => {
+  let { user } = useContext(AuthContext);
+
   return (
     <div className="fc header-bottom" style={styles?.borders}>
       <Link to="/recommend">Recommender</Link>
       <Link to="/diet-plan">Diet-plan</Link>
       <Link to="/requests">Browse</Link>
-      <Link to="/requests/publish">Publish</Link>
-      <Link to="/recommend">About Us</Link>
+      {!user.is_rider && <Link to="/requests/publish">Publish</Link>}
+      {user.is_rider && <Link to="/orders">Order</Link>}
+      <Link to="/about-us">About Us</Link>
     </div>
   );
 };
@@ -46,7 +49,7 @@ const Header = ({ isHomepage }) => {
         </Link>
         {user ? (
           <div className="header-account fc">
-            <Link to='/account' className="fc header-account">
+            <Link to="/account" className="fc header-account">
               <span>{user?.name || user?.username}</span>
               <FaUser size="1.25em" />
               <AiFillStar color="gold" />

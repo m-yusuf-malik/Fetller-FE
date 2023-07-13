@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import axios from "axios";
 
 import AuthContext from "../../context/AuthContext";
@@ -12,19 +14,27 @@ import Button from "../../components/Button/Button";
 
 import data from "../../assets/data";
 
-import "./RequestDetails.styles.css";
+import "./OrderDetails.styles.css";
 
-const RequestDetails = () => {
+const OrderDetails = () => {
   const { toastOptions } = data;
 
-  const { id: request_id } = useParams();
+  const { id: order_id } = useParams();
   const navigate = useNavigate();
 
   const { authTokens } = useContext(AuthContext);
 
+  const [order, setOrder] = useState(null);
   const [request, setRequet] = useState(null);
+  const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
+
+  const options = [
+    { value: 0, label: "Pending" },
+    { value: 1, label: "Accepted" },
+    { value: 2, label: "Delivered" },
+  ];
 
   const updateSuccessNavigateAlert = (text) =>
     toast.success(text, {
@@ -33,11 +43,11 @@ const RequestDetails = () => {
     });
 
   useEffect(() => {
-    const usefetchRequestDetails = async () => {
+    const usefetchOrderDetails = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `${process.env.REACT_APP_API_DOMAIN_URL}/requests/${request_id}`,
+          `${process.env.REACT_APP_API_DOMAIN_URL}/orders/${order_id}`,
           {
             headers: {
               Authorization: `Bearer ${String(authTokens.access)}`,
@@ -45,7 +55,9 @@ const RequestDetails = () => {
           }
         );
         const data = response.data;
-        setRequet(data);
+        setOrder(data);
+        setRequet(data.request);
+        setStatus(data.status);
       } catch (error) {
         setErrors(error);
       } finally {
@@ -53,24 +65,50 @@ const RequestDetails = () => {
       }
     };
 
-    usefetchRequestDetails();
+    usefetchOrderDetails();
   }, []);
 
-  const confirmOrder = async () => {
+  const handleStatus = (event) => {
+    setStatus(event.value);
+  };
+
+  const deleteOrder = async () => {
     try {
-      setIsLoading(true);
-      await axios.post(
-        `${process.env.REACT_APP_API_DOMAIN_URL}/orders`,
-        { request_id: request_id },
+      await axios.delete(
+        `${process.env.REACT_APP_API_DOMAIN_URL}/orders/${order_id}`,
         {
           headers: {
             Authorization: `Bearer ${String(authTokens.access)}`,
           },
         }
       );
-      updateSuccessNavigateAlert("Order confirmed.");
+      updateSuccessNavigateAlert("Order Completed.");
+    } catch (error) {
+      setErrors(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-      // navigate("/");
+  const UpdateOrder = async () => {
+    try {
+      setIsLoading(true);
+
+      if (status == 2) {
+        deleteOrder();
+        return;
+      }
+
+      await axios.patch(
+        `${process.env.REACT_APP_API_DOMAIN_URL}/orders/${order_id}`,
+        { status: status },
+        {
+          headers: {
+            Authorization: `Bearer ${String(authTokens.access)}`,
+          },
+        }
+      );
+      updateSuccessNavigateAlert("Order Updated.");
     } catch (error) {
       setErrors(error);
     } finally {
@@ -84,20 +122,23 @@ const RequestDetails = () => {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <main className="request-details__main fc">
+        <main className="order-details__main fc">
           <ToastContainer />
 
           <h3>{request.title}</h3>
-          <div className="request-details__container fc">
-            <div className="request-details__img-container fc">
-              <img src={request.image} alt="" />
+          <div className="order-details__container fc">
+            <div className="order-details__img-container fc">
+              <img src={request.image} alt={request.title} />
             </div>
-            <div className="request-details__main-texts fc">
+            <div className="order-details__main-texts fc">
+              <div>
+                <h5>Requested by</h5>
+                <p>{request.user}</p>
+              </div>
               <div>
                 <h5>Description</h5>
                 <p>{request.description}</p>
               </div>
-
               <div>
                 <h5>Destination</h5>
 
@@ -117,15 +158,28 @@ const RequestDetails = () => {
                 <h5>Receiver phone number</h5>
                 <p>{request.phone_number}</p>
               </div>
-
+              <div>
+                <h5>Score</h5>
+                <p>{order.score}</p>
+              </div>
+              <div style={{ marginBottom: "1rem" }}>
+                <h5>Created at</h5>
+                <p>{order.created_at}</p>
+              </div>
+              <Dropdown
+                options={options}
+                onChange={handleStatus}
+                value={options.find((option) => option.value === status)}
+                arrowClassName="drop-down-arrow"
+                controlClassName="order-details__drop-down-control"
+              />
               <Button
-                text="Confirm"
+                text="Update"
                 style={{
                   backgroundColor: "var(--primary-bg-color)",
                   color: "var(--white-black-text-color)",
-                  marginTop: "2em",
                 }}
-                onClick={confirmOrder}
+                onClick={UpdateOrder}
               />
             </div>
           </div>
@@ -136,4 +190,4 @@ const RequestDetails = () => {
   );
 };
 
-export default RequestDetails;
+export default OrderDetails;

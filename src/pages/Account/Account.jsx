@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { AiFillStar } from "react-icons/ai";
 import axios from "axios";
@@ -23,7 +22,6 @@ const Account = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState(null);
-    const navigate = useNavigate();
 
     const updateSuccessAlert = (text) => toast.success(text, toastOptions)
     const updateSuccessNavigateAlert = (text) => toast.success(text, {

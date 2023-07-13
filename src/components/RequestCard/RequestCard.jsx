@@ -1,5 +1,6 @@
-import "./RequestCard.styles.css";
 import { Link } from "react-router-dom";
+
+import "./RequestCard.styles.css";
 
 const RequestCard = ({ id, title, price, city, country, image }) => {
   const imgUrl = `${process.env.REACT_APP_DOMAIN_URL}${image}`;
@@ -12,8 +13,8 @@ const RequestCard = ({ id, title, price, city, country, image }) => {
       <div className="fc" style={{ justifyContent: "start", width: "100%" }}>
         <p>$ {price}</p>
       </div>
-      <img src={imgUrl} alt="" />
-      <p style={{ fontWeight: "700", marginTop:'1em' }}>
+      <img src={imgUrl} alt={title} />
+      <p style={{ fontWeight: "700", marginTop: "1em" }}>
         {city}, {country}
       </p>
     </Link>
