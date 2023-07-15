@@ -85,6 +85,7 @@ const Account = () => {
                         },
                     })
                 .then((response) => {
+                    console.log(response)
                     updateSuccessNavigateAlert("Redirectig to login...")
                 })
                 .catch((error) => {

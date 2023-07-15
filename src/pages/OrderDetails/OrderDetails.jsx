@@ -29,6 +29,7 @@ const OrderDetails = () => {
   const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
+  const [unStatus, setUnStatus] = useState(0)
 
   const options = [
     { value: 0, label: "Pending" },
@@ -41,6 +42,8 @@ const OrderDetails = () => {
       onClose: () => navigate("/"),
       ...toastOptions,
     });
+  const errorAlert = (text) => toast.error(text, toastOptions)
+
 
   useEffect(() => {
     const usefetchOrderDetails = async () => {
@@ -58,6 +61,7 @@ const OrderDetails = () => {
         setOrder(data);
         setRequet(data.request);
         setStatus(data.status);
+        setUnStatus(data.status)
       } catch (error) {
         setErrors(error);
       } finally {
@@ -69,6 +73,12 @@ const OrderDetails = () => {
   }, []);
 
   const handleStatus = (event) => {
+    if (event.value < status) {
+      setStatus(unStatus)
+      errorAlert("Invalid option!")
+      return;
+    }
+
     setStatus(event.value);
   };
 
@@ -93,6 +103,12 @@ const OrderDetails = () => {
   const UpdateOrder = async () => {
     try {
       setIsLoading(true);
+
+      if (status <= unStatus) {
+        setStatus(unStatus)
+        errorAlert("Invalid option!")
+        return;
+      }
 
       if (status == 2) {
         deleteOrder();
