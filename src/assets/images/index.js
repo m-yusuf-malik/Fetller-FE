@@ -11,8 +11,21 @@ import reqImg from "./req.webp";
 import proImg from "./pro.png";
 import boyRecommend from "./boyRecommend.png";
 import girlRecommend from "./girlRecommend.png";
-import dietBG from "./diet-bg.png"
-import accountBG from "./account-bg.webp"
+import dietBG from "./diet-bg.png";
+import accountBG from "./account-bg.webp";
+import serverDown from "./server_down.webp";
+import bronze from "./batches/bronze.png";
+import silver from "./batches/silver.png";
+import gold from "./batches/gold.png";
+import diamond from "./batches/diamond.png";
+import defaultRequest from "./default_request.png";
+
+const batches = {
+  bronze,
+  silver,
+  gold,
+  diamond,
+};
 
 export default {
   heroImg,
@@ -30,4 +43,7 @@ export default {
   girlRecommend,
   dietBG,
   accountBG,
+  serverDown,
+  defaultRequest,
+  batches,
 };

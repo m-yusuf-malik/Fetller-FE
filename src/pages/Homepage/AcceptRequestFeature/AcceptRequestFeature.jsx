@@ -15,13 +15,14 @@ const AcceptRequestFeature = () => {
         alt="RequestFeature"
       />
       <div className="home__features-headings">
-        <h3 style={{ color: "#202533" }}>Publish a request</h3>
-        <p>
-          Need a nutrient that’s not available in your country? Worry not, just
-          publish a request and get it in reasonable prices.
+        <h3 style={{ color: "#202533" }}>Accept a request</h3>
+        <p style={{ textAlign: "center" }}>
+          Earn money by delvering the requests of the users to the destination
+          you are already going.
         </p>
         <Button
-          text="Publish"
+          link="/recommend"
+          text="Accept"
           style={{
             marginTop: "1rem",
             backgroundColor: "transparent",

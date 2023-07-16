@@ -16,14 +16,6 @@ import CenterText from "../../components/CenterText/CenterText";
 import "./DietPlan.styles.css";
 import images from "../../assets/images";
 import data from "../../assets/data"
-// const DPTableHeader = () => {
-//   return (
-//     <div className="div-table__table-header fc" style={{ border: "1px solid" }}>
-//       <h4>Time</h4>
-//       <h4>Meal</h4>
-//     </div>
-//   );
-// };
 
 const DPTableRow = ({ time, meal }) => {
   return (
@@ -50,7 +42,6 @@ const DietPlan = () => {
   const [todayMeals, setTodayMeals] = useState();
   const [schedule, setSchedule] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  // const [errors, setErrors] = useState(null);
   const [updateData, setUpdateData] = useState(null);
   const [updateErrors, setUpdateErrors] = useState(null);
   const navigate = useNavigate();
@@ -82,7 +73,6 @@ const DietPlan = () => {
         setTodayMeals(data.diet);
         setSchedule(data.schedule);
       } catch (error) {
-        // setErrors(error);
       } finally {
         setIsLoading(false);
       }

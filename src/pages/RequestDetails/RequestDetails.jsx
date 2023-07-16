@@ -11,11 +11,13 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import Button from "../../components/Button/Button";
 
 import data from "../../assets/data";
+import images from "../../assets/images";
 
 import "./RequestDetails.styles.css";
 
 const RequestDetails = () => {
   const { toastOptions } = data;
+  const { defaultRequest } = images;
 
   const { id: request_id } = useParams();
   const navigate = useNavigate();
@@ -90,7 +92,11 @@ const RequestDetails = () => {
           <h3>{request.title}</h3>
           <div className="request-details__container fc">
             <div className="request-details__img-container fc">
-              <img src={request.image} alt="" />
+              {request?.image ? (
+                <img src={request.image} alt={request.title} />
+              ) : (
+                <img src={defaultRequest} alt="default" />
+              )}
             </div>
             <div className="request-details__main-texts fc">
               <div>

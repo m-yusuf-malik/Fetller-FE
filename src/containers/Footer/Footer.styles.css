@@ -19,3 +19,8 @@ footer > div {
   font-family: "Oswald", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
+footer > div > h5 {
+  color: var(--white-50-text-color);
+  padding-bottom: 0.5em;
+}

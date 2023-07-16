@@ -18,7 +18,7 @@ header {
 
 .header-account {
   flex: 1;
-  gap: 1em;
+  gap: 1.25em;
   justify-content: flex-end;
 }
 
@@ -33,4 +33,8 @@ header {
 
   gap: 2.5em;
   border-bottom: 0.5px solid var(--secondary-bg-color);
+}
+
+.header__batch{
+  width: 1.5rem;
 }

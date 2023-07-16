@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+
+import ServerDown from "../pages/ServerDown/ServerDown";
 
 const AuthContext = createContext();
 
@@ -12,28 +14,33 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
-  const [loginErrors, setLoginErrors] = useState(null)
+  const [loginErrors, setLoginErrors] = useState(null);
   let [user, setUser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
+
   let [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState(null);
 
   const navigate = useNavigate();
 
   let loginUser = async (e) => {
     e.preventDefault();
-    let response = await fetch(`${process.env.REACT_APP_API_DOMAIN_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: e.target.email.value,
-        password: e.target.password.value,
-      }),
-    });
+    let response = await fetch(
+      `${process.env.REACT_APP_API_DOMAIN_URL}/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: e.target.email.value,
+          password: e.target.password.value,
+        }),
+      }
+    );
     let data = await response.json();
 
     if (response.status === 200) {
@@ -42,9 +49,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("authTokens", JSON.stringify(data));
       navigate("/");
     } else {
-      setLoginErrors(data.errors)
-      // console.log(data.errors)
-      // alert("Something went wrong!");
+      setLoginErrors(data.errors);
     }
   };
 
@@ -57,13 +62,16 @@ export const AuthProvider = ({ children }) => {
 
   let updateToken = async (refresh) => {
     try {
-      let response = await fetch(`${process.env.REACT_APP_API_DOMAIN_URL}/token/refresh`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ refresh: authTokens?.refresh }),
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_API_DOMAIN_URL}/token/refresh`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ refresh: authTokens?.refresh }),
+        }
+      );
 
       let data = await response.json();
 
@@ -73,16 +81,17 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens({ ...authTokens, access: data.access });
         setUser(jwt_decode(data.access));
         localStorage.setItem("authTokens", JSON.stringify(authTokens));
-      }
 
-      else {
+        if (loading) {
+          setLoading(false);
+        }
+      } else {
         logoutUser();
       }
-
-      if (loading) {
-        setLoading(false);
-      }
     } catch (error) {
+      setErrors(error)
+      setLoading(false);
+
       // logoutUser();
     }
   };
@@ -112,11 +121,12 @@ export const AuthProvider = ({ children }) => {
       }
     }, fourMinutes);
     return () => clearInterval(interval);
-  }, [authTokens, loading]);
+  }, [authTokens]);
 
   return (
     <AuthContext.Provider value={contextData}>
-      {loading ? null : children}
+      {errors ? <ServerDown loading={loading} /> : children}
+      {/* {loading ? null : children} */}
     </AuthContext.Provider>
   );
 };

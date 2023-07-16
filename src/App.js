@@ -23,6 +23,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Order from "./pages/Order/Order";
 import PublishPrivateRoute from "./Routes/PublishPrivateRoute";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,8 +43,8 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route exact path="/orders" element={<OrderPrivateRoute />}>
-            <Route exact path="" element={<Order />} />
-            <Route exact path="/orders/:id" element={<OrderDetails />} />
+              <Route exact path="" element={<Order />} />
+              <Route exact path="/orders/:id" element={<OrderDetails />} />
             </Route>
             <Route exact path="/requests" element={<PublishPrivateRoute />}>
               <Route exact path="publish" element={<PublishRequest />} />
@@ -57,6 +58,7 @@ function App() {
                 <Route path="" element={<BrowseRequests />} />
                 <Route path="/requests/:id" element={<RequestDetails />} />
               </Route>
+              <Route exact path="/about-us" element={<AboutUs />} />
             </Route>
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />

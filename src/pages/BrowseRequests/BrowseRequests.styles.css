@@ -15,6 +15,23 @@
   flex-wrap: wrap;
 }
 
+.browse-requests__drop-down-control {
+  width: 10rem;
+  border-radius: 2.5px;
+  border: none;
+  background-color: transparent;
+  font-size: 0.8rem;
+  color: var(--black-text-color);
+  font-weight: 400;
+  cursor: pointer;
+  border: 1px solid var(--primary-bg-color);
+  padding: 0rem 1rem;
+}
+
+.browse-requests-arrow {
+  top: 13px;
+}
+
 @media (max-width: 850px) {
   .requests-container {
     flex-direction: column;

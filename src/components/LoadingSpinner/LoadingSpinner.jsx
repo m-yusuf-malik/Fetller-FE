@@ -1,16 +1,23 @@
-import React from "react";
-import { Dna } from "react-loader-spinner";
+import { MutatingDots } from "react-loader-spinner";
+
+import "./LoadingSpinner.styles.css";
 
 const LoadingSpinner = () => {
   return (
-    <div className="fc" style={{ padding: "15rem 0" }}>
-      <Dna
+    <div
+      className="loading-spinner__container fc"
+      // style={{ padding: "150rem 0" }}
+    >
+      <MutatingDots
         visible={true}
-        height="5rem"
-        width="5rem"
-        ariaLabel="dna-loading"
+        height="100"
+        width="100"
+        color="var(--secondary-bg-color)"
+        secondaryColor="var(--primary-bg-color)"
+        radius="8"
+        ariaLabel="mutating-dots-loading"
         wrapperStyle={{}}
-        wrapperClass="dna-wrapper"
+        wrapperClass="mutating-dots-wrapper"
       />
     </div>
   );

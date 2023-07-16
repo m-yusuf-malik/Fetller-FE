@@ -9,11 +9,12 @@ const FeatureSection = () => {
     <section className="home fc" style={{ gap: "10em" }}>
       <div className="home__features-headings">
         <h3 style={{ color: "#BCDCFF" }}>Publish a request</h3>
-        <p style={{ color: "#DEEDFF" }}>
-          Need a nutrient that’s not available in your country? Worry not, just
-          publish a request and get it in reasonable prices.
+        <p style={{ color: "#DEEDFF", textAlign: "center" }}>
+          Need a nutrient that’s not available in your country? Worry not,
+          just publish a request and get it in reasonable prices.
         </p>
         <Button
+          link="/requests/publish"
           text="Publish"
           style={{
             marginTop: "1rem",

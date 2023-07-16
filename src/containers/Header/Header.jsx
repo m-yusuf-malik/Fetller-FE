@@ -1,10 +1,15 @@
-import "./Header.styles.css";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../context/AuthContext";
-import { AiFillStar, AiOutlineSearch } from "react-icons/ai";
+import axios from "axios";
+
+import { AiOutlineSearch } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { HiLogout } from "react-icons/hi";
+
+import AuthContext from "../../context/AuthContext";
+import data from "../../assets/data";
+
+import "./Header.styles.css";
 
 const HeaderNav = ({ styles }) => {
   let { user } = useContext(AuthContext);
@@ -22,7 +27,36 @@ const HeaderNav = ({ styles }) => {
 };
 
 const Header = ({ isHomepage }) => {
-  let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser, authTokens } = useContext(AuthContext);
+  const { batch_images } = data;
+
+  const [userBatch, setUserBatch] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_DOMAIN_URL}/users/${user.username}/batch`,
+          {
+            headers: {
+              Authorization: `Bearer ${String(authTokens.access)}`,
+            },
+          }
+        );
+        const data = response.data;
+        setUserBatch(data.batch_name);
+      } catch (error) {
+        // setErrors(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [authTokens.access]);
 
   let styles = {
     header: {
@@ -41,7 +75,7 @@ const Header = ({ isHomepage }) => {
   return (
     <header style={styles?.header}>
       <div className="fc header-upper" style={styles?.borders}>
-        <Link to="/" style={{ flex: "1" }}>
+        <Link to="/requests/#requests__search" className="fc" style={{ flex: "1" , justifyContent:'flex-start'}}>
           <AiOutlineSearch size={"1.25em"} />
         </Link>
         <Link to="/" style={{ flexGrow: "1", justifyContent: "center" }}>
@@ -49,10 +83,20 @@ const Header = ({ isHomepage }) => {
         </Link>
         {user ? (
           <div className="header-account fc">
-            <Link to="/account" className="fc header-account">
+            <Link
+              to="/account"
+              className="fc header-account"
+              style={{ marginRight: ".75rem" }}
+            >
               <span>{user?.name || user?.username}</span>
               <FaUser size="1.25em" />
-              <AiFillStar color="gold" />
+
+              {/* <AiFillStar color="black" /> */}
+              <img
+                src={batch_images[userBatch]}
+                className="header__batch"
+                alt=""
+              />
             </Link>
             <HiLogout onClick={logoutUser} />
           </div>

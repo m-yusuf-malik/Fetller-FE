@@ -1,6 +1,8 @@
-import "./Hero.styles.css";
-import images from "../../../assets/images";
 import Button from "../../../components/Button/Button";
+
+import images from "../../../assets/images";
+
+import "./Hero.styles.css";
 
 const Hero = () => {
   const { heroVector, heroFirst, heroSecond, heroThird } = images;
@@ -15,8 +17,9 @@ const Hero = () => {
           diet can be consider a major factor for achieving this.
         </p>
         <div className="fc hero__buttons">
-          <Button text="Get Started" />
+          <Button text="Get Started" link="/recommend" />
           <Button
+            link={"/requests"}
             text="View Requests"
             style={{
               backgroundColor: "transparent",

@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import axios from "axios";
 
-import "./BrowseRequests.styles.css";
-
+import AuthContext from "../../context/AuthContext";
 import Header from "../../containers/Header/Header";
 import Footer from "../../containers/Footer/Footer";
 import RequestCard from "../../components/RequestCard/RequestCard";
 import Input from "../../components/Input/Input";
-import AuthContext from "../../context/AuthContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
+import "./BrowseRequests.styles.css";
 
 const Requests = ({ paramsUrl }) => {
   const { authTokens, user } = useContext(AuthContext);
@@ -61,6 +63,13 @@ const BrowseRequests = () => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [requestParamsUrl, setRequestParamsUrl] = useState("");
+  const options = [
+    { value: "", label: "None" },
+    { value: "-price", label: "High to low price" },
+    { value: "price", label: "Low to high price" },
+    { value: "-created_at", label: "Newest" },
+    { value: "created_at", label: "Oldest" },
+  ];
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -72,11 +81,11 @@ const BrowseRequests = () => {
   };
 
   const handleSortChange = (event) => {
-    setSortBy(event.target.value);
+    setSortBy(event.value);
 
     if (search != "")
-      setRequestParamsUrl(`search=${search}&ordering=${event.target.value}`);
-    else setRequestParamsUrl(`ordering=${event.target.value}`);
+      setRequestParamsUrl(`search=${search}&ordering=${event.value}`);
+    else setRequestParamsUrl(`ordering=${event.value}`);
   };
 
   return (
@@ -89,14 +98,15 @@ const BrowseRequests = () => {
           className="fc"
           style={{ justifyContent: "space-between", width: "100%" }}
         >
-          <select value={sortBy} onChange={handleSortChange}>
-            <option value="">Sort by</option>
-            <option value="-created_at">Newest</option>
-            <option value="created_at">Oldest</option>
-            <option value="price">Low to high Price</option>
-            <option value="-price">High to low Price</option>
-          </select>
+          <Dropdown
+            options={options}
+            onChange={handleSortChange}
+            value={options.find((option) => option.value === sortBy)}
+            arrowClassName="browse-requests-arrow"
+            controlClassName="browse-requests__drop-down-control asd"
+          />
           <Input
+            id="requests__search"
             type="search"
             placeholder="Search"
             name="password"

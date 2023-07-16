@@ -1,5 +1,4 @@
 .order-details__main {
-  /* width: 100vw; */
   padding: 5em;
   flex-direction: column;
 }
@@ -48,7 +47,6 @@
 
 .order-details__drop-down-control {
   width: 10rem;
-  /* height: 2.75rem; */
   border-radius: 2.5px;
   border: none;
   background-color: transparent;
@@ -58,12 +56,10 @@
   cursor: pointer;
   border: 1px solid var(--primary-bg-color);
   padding: 0.25rem 1rem;
-  /* margin-top: 12em */
 }
 
 .order-details__drop-down div.Dropdown-option:hover {
   background-color: var(--tertiary-bg-color);
-  /* background-color: #141a2a; */
 }
 
 .drop-down-arrow {
@@ -71,20 +67,14 @@
 }
 
 @media (max-width: 850px) {
-  .order-details__drop-down-control {
-    /* padding: 0; */
-  }
   .order-details__drop-down-control,
   .Dropdown-option {
     /* height: 2.5rem; */
     line-height: 0;
-  padding: 1.25rem 1rem;
+    padding: 1.25rem 1rem;
   }
-  .Dropdown-arrow{
+  .Dropdown-arrow {
     border-width: 2.75px 2.75px 0;
-  }
-  .Dropdown-placeholder {
-    /* padding: 0; */
   }
   .drop-down-arrow {
     top: 7px;

@@ -1,13 +1,16 @@
-import "./Footer.styles.css";
+import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+
+import Input from "../../components/Input/Input";
+
+import "./Footer.styles.css";
 
 const Footer = ({ isHomepage }) => {
   let styles = {
     footer: {
       backgroundColor: "var(--white-75-color)",
       color: "var(--black-75-color)",
-      borderTop: "0.5px solid var(--black-75-color)"
-
+      borderTop: "0.5px solid var(--black-75-color)",
     },
     names: {
       color: "var(--black-75-color)",
@@ -21,7 +24,9 @@ const Footer = ({ isHomepage }) => {
   return (
     <footer className="fc" style={styles?.footer}>
       <div>
-        <span className="footer-comapny-name" style={styles?.names}>Fettler++</span>
+        <span className="footer-comapny-name" style={styles?.names}>
+          Fettler++
+        </span>
         <span>Copyright © 2023 Fettler++</span> <span>All rights reserved</span>
         <div
           className="fc"
@@ -37,20 +42,30 @@ const Footer = ({ isHomepage }) => {
         </div>
       </div>
       <div>
-        <h5 style={{ paddingBottom: ".5em" }}>Company</h5>
-        <span>Recommender</span>
-        <span>Publish</span>
-        <span>Browse</span>
-        <span>Diet-plan</span>
+        <h5 style={styles?.names}>Company</h5>
+        <Link to="/recommend">Recommender</Link>
+        <Link to="/requests">Browse</Link>
+        <Link to="/diet-plan">Diet-plan</Link>
+        <span>About Us</span>
       </div>
       <div>
         <span>Lahore, Pakistan</span>
         <span>+923077424234</span>
-        <span>contact@fettler.com</span>
+        <span>fettlerplus@gmail.com</span>
       </div>
       <div>
-        <h5 style={{ paddingBottom: ".5em" }}>Get updates</h5>
-        <input type="text" />
+        <h5 style={styles?.names}>Get updates</h5>
+        <Input
+          type="search"
+          placeholder="Enter email"
+          name="email"
+          style={{
+            width: "15rem",
+            backgroundColor: "var(--primary-bg-white-color)",
+          }}
+          // value={search}
+          // onChange={handleSearch}
+        />
       </div>
     </footer>
   );

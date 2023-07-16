@@ -77,3 +77,8 @@ a {
   text-decoration: none;
   color: var(--primary-text-color);
 }
+
+a:hover {
+  font-weight: 900;
+  color: var(--white-50-text-color);
+}

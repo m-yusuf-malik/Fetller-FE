@@ -11,13 +11,17 @@ const SectionA = () => {
       style={{ backgroundColor: "#F3F4F6", gap: "2.5rem", width: "100%" }}
     >
       <img src={sectionALeft} alt="AI" />
-      <div className="fc home__sectionA-texts" style={{ flexDirection: "column", gap: ".5rem" }}>
+      <div
+        className="fc home__sectionA-texts"
+        style={{ flexDirection: "column", gap: ".5rem" }}
+      >
         <h4>Be the best you!</h4>
         <p style={{ textAlign: "center" }}>
           Our intelligent system will recommend the best diet for you, its up to
           you to follow now.
         </p>
         <Button
+          link="/recommend"
           text="Recommend"
           style={{
             color: "#DEEDFF",
