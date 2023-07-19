@@ -13,11 +13,13 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import Button from "../../components/Button/Button";
 
 import data from "../../assets/data";
+import images from "../../assets/images";
 
 import "./OrderDetails.styles.css";
 
 const OrderDetails = () => {
   const { toastOptions } = data;
+  const { defaultRequest } = images;
 
   const { id: order_id } = useParams();
   const navigate = useNavigate();
@@ -29,6 +31,8 @@ const OrderDetails = () => {
   const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
+  
+  // if status changed?
   const [unStatus, setUnStatus] = useState(0)
 
   const options = [
@@ -144,7 +148,11 @@ const OrderDetails = () => {
           <h3>{request.title}</h3>
           <div className="order-details__container fc">
             <div className="order-details__img-container fc">
-              <img src={request.image} alt={request.title} />
+              {request?.image ? (
+                <img src={request.image} alt={request.title} />
+              ) : (
+                <img src={defaultRequest} alt="default" />
+              )}
             </div>
             <div className="order-details__main-texts fc">
               <div>

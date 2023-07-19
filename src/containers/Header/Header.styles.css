@@ -18,8 +18,8 @@ header {
 
 .header-account {
   flex: 1;
-  gap: 1.25em;
-  justify-content: flex-end;
+  gap: 1.25rem;
+  justify-content: flex-end !important;
 }
 
 .header-upper {

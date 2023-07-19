@@ -90,8 +90,6 @@ const Header = ({ isHomepage }) => {
             >
               <span>{user?.name || user?.username}</span>
               <FaUser size="1.25em" />
-
-              {/* <AiFillStar color="black" /> */}
               <img
                 src={batch_images[userBatch]}
                 className="header__batch"

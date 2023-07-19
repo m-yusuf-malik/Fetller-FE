@@ -7,7 +7,7 @@ section.home {
 }
 
 .hero__buttons {
-  justify-content: start;
+  justify-content: start !important;
   gap: 0.5rem;
   margin-top: 1em;
 }

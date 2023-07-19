@@ -1,5 +1,6 @@
-import images from "../../../assets/images";
 import Button from "../../../components/Button/Button";
+
+import images from "../../../assets/images";
 
 const AcceptRequestFeature = () => {
   const { acceptRequestFeature } = images;
@@ -21,12 +22,11 @@ const AcceptRequestFeature = () => {
           you are already going.
         </p>
         <Button
-          link="/recommend"
+          link="/requests"
           text="Accept"
           style={{
             marginTop: "1rem",
             backgroundColor: "transparent",
-            // border: "1px solid #BCDCFF",
             color: "var(--black-text-color)",
             border: "1px solid var(--black-text-color)",
           }}

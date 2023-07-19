@@ -9,6 +9,7 @@ import AuthContext from "../../context/AuthContext";
 import Button from "../Button/Button";
 
 import data from "../../assets/data";
+import images from "../../assets/images";
 
 import "./OrderCard.styles.css";
 
@@ -21,6 +22,8 @@ const OrderCard = ({
   score,
   status,
 }) => {
+  const { defaultRequest } = images;
+
   const [currentStatus, setStatus] = useState(status);
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
@@ -83,7 +86,6 @@ const OrderCard = ({
           },
         }
       );
-      console.log("HY");
       updateSuccessNavigateAlert("Order Updated.");
     } catch (error) {
       setErrors(error);
@@ -92,13 +94,17 @@ const OrderCard = ({
     }
   };
 
-  console.log(status);
 
   return (
     <div className="order-card fc">
       <ToastContainer />
 
-      <img src={imgUrl} alt={title} />
+      {image ? (
+        <img src={imgUrl} alt={title} />
+      ) : (
+        <img src={defaultRequest} alt="default" />
+      )}
+
       <Link to={`/orders/${id}`} className="fcc" style={{ gap: ".5rem" }}>
         <h5 style={{ marginBottom: "1rem" }}>{title}</h5>
 
