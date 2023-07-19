@@ -1,15 +1,15 @@
-import "./App.css";
 import { useEffect } from "react";
-
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
 } from "react-router-dom";
+
+import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./Routes/PrivateRoute";
 import OrderPrivateRoute from "./Routes/OrderPrivateRoute";
-import { AuthProvider } from "./context/AuthContext";
+
 import Homepage from "./pages/Homepage/Homepage";
 import Login from "./pages/Login/Login";
 import Recommend from "./pages/Recommend/Recommend";
@@ -24,6 +24,8 @@ import Order from "./pages/Order/Order";
 import PublishPrivateRoute from "./Routes/PublishPrivateRoute";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import AboutUs from "./pages/AboutUs/AboutUs";
+
+import "./App.css";
 
 function ScrollToTop() {
   const { pathname } = useLocation();

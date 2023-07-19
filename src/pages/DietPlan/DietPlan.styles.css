@@ -1,8 +1,6 @@
 .diet-plan {
-  /* padding: 10em 5em; */
-  /* width: 100vw; */
   flex-direction: column;
-  background-image: url("../../assets/images/diet-bg.png");
+  background-image: url("../../assets/images/dietBg.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
