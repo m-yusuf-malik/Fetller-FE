@@ -46,7 +46,7 @@ const Footer = ({ isHomepage }) => {
         <Link to="/recommend">Recommender</Link>
         <Link to="/requests">Browse</Link>
         <Link to="/diet-plan">Diet-plan</Link>
-        <span>About Us</span>
+        <Link to="/about-us">About Us</Link>
       </div>
       <div>
         <span>Lahore, Pakistan</span>
@@ -63,8 +63,6 @@ const Footer = ({ isHomepage }) => {
             width: "15rem",
             backgroundColor: "var(--primary-bg-white-color)",
           }}
-          // value={search}
-          // onChange={handleSearch}
         />
       </div>
     </footer>

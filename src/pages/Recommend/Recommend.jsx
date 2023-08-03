@@ -115,6 +115,8 @@ const Recommend = () => {
                     type="file"
                     id="file-input"
                     name="image"
+                    capture="user"
+                    accept="image"
                     style={{ display: "none" }}
                     onChange={handleFileChange}
                   />

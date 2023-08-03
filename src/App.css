@@ -1,16 +1,3 @@
-.fc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fcc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 p {
   font-family: Lato;
   font-size: 1rem;
