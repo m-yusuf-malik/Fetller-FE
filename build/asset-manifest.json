@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d5f01226.css",
+    "main.js": "/static/js/main.7ae7fbe2.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/boyRecommend.png": "/static/media/boyRecommend.387ae63caf893d5ca3c2.png",
+    "static/media/girlRecommend.png": "/static/media/girlRecommend.48ba5cba529bdbc71518.png",
+    "static/media/dietBg.png": "/static/media/dietBg.b89384ea7b110d0596b2.png",
+    "static/media/requestFeatureSection.jpg": "/static/media/requestFeatureSection.4a7b993fef9fdc991c4f.jpg",
+    "static/media/heroFirst.jpg": "/static/media/heroFirst.c7c9f0e939be9f9c98c3.jpg",
+    "static/media/heroThird.jpg": "/static/media/heroThird.ba6919b33e83aeee19d2.jpg",
+    "static/media/heroSecond.jpg": "/static/media/heroSecond.51b3166b6ccae3e8d88e.jpg",
+    "static/media/sectionARight.jpg": "/static/media/sectionARight.6c2e2150a99b2a08c273.jpg",
+    "static/media/bronze.png": "/static/media/bronze.c1eb85f2f5e7f390a488.png",
+    "static/media/sectionALeft.jpg": "/static/media/sectionALeft.0ed97802dbe1ded7f213.jpg",
+    "static/media/diamond.png": "/static/media/diamond.8c70e852b5b36f3cabb5.png",
+    "static/media/accountBg.webp": "/static/media/accountBg.e979e899797f5f776cf4.webp",
+    "static/media/serverDown.webp": "/static/media/serverDown.49382da086665f786d92.webp",
+    "static/media/acceptRequestFeature.jpg": "/static/media/acceptRequestFeature.765c64c0a7ad63cb0d30.jpg",
+    "static/media/gold.png": "/static/media/gold.8b9f6fa77c44ed11ce67.png",
+    "static/media/silver.png": "/static/media/silver.81b91ea5b489723fa413.png",
+    "static/media/heroVector.png": "/static/media/heroVector.b6d41c7dfd32cbf6c43c.png",
+    "index.html": "/index.html",
+    "main.d5f01226.css.map": "/static/css/main.d5f01226.css.map",
+    "main.7ae7fbe2.js.map": "/static/js/main.7ae7fbe2.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5f01226.css",
+    "static/js/main.7ae7fbe2.js"
+  ]
+}
